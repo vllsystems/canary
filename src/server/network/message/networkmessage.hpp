@@ -20,6 +20,8 @@ class RSA;
 
 class NetworkMessage {
 public:
+	virtual ~NetworkMessage() = default;
+
 	using MsgSize_t = uint16_t;
 	// Headers:
 	// 2 bytes for unencrypted message size
@@ -137,7 +139,7 @@ public:
 	 */
 	void addString(const std::string &value, const std::source_location &location = std::source_location::current(), const std::string &function = "");
 
-	void addDouble(double value, uint8_t precision = 2);
+	void addDouble(double value, uint8_t precision = 4);
 	double getDouble();
 
 	// write functions for complex types
